@@ -62,7 +62,43 @@ function sentenceArray(text) {
     if (text != undefined) return text.split(". ");
 }
 
+function predict(text) {
+    if (text != undefined) {
+        return (async () => {
+            const onnx = await import("onnx");
+
+            const modelPath = "model.onnx";
+            const model = await onnx.load(modelPath);
+
+            const inputIds = tokenizer.encode(text);
+
+            const inputTensor = new onnx.Tensor(
+                new Int32Array(inputIds),
+                "int32",
+                [1, inputIds.length]
+            );
+
+            const output = await model.run({ input: inputTensor });
+            return output.values().next().value.data;
+        })();
+    }
+}
+
+function generateSentiment(text) {
+    if (text != undefined) {
+        let array = [];
+        for (const sentence of sentenceArray(text)) {
+            array.push(predict(sentence));
+        }
+        let total = 0;
+        for (let i of array) {
+            total += i;
+        }
+        return total / array.length;
+    }
+}
+
 // let logo = document.getElementById("logo");
 // logo.src = chrome.runtime.getURL("logo.png");
 
-console.log(formatText(getArticleContents()));
+console.log(generateSentiment(formatText(getArticleContents())));
