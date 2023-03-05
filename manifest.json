@@ -3,8 +3,8 @@
     "name": "Political Sentiment Analyzer",
     "description": "Analyzes political sentiment of a webpage",
     "version": "1.0",
-    "permissions": ["activeTab"],
-    "host_permissions": ["http://*/*", "https://*/*"],
+    "permissions": ["activeTab", "scripting", "webNavigation", "notifications"],
+    "host_permissions": ["<all_urls>"],
     "action": {
         "default_popup": "popup/popup.html"
     },
@@ -25,5 +25,8 @@
             "matches": ["<all_urls>"],
             "resources": ["images/logo.png"]
         }
-    ]
+    ],
+    "background": {
+        "service_worker": "scripts/background.js"
+    }
 }

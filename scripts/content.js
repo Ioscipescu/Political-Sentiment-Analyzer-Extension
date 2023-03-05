@@ -51,7 +51,18 @@ function parseHtml(htmlDoc, text) {
     }
 }
 
+function formatText(text) {
+    if (text != undefined)
+        return text
+            .replace(/\s+/g, " ")
+            .replace(/[^a-zA-Z0-9"';:!?()-_,. ]/g, "");
+}
+
+function sentenceArray(text) {
+    if (text != undefined) return text.split(". ");
+}
+
 // let logo = document.getElementById("logo");
 // logo.src = chrome.runtime.getURL("logo.png");
 
-console.log(getArticleContents());
+console.log(formatText(getArticleContents()));
