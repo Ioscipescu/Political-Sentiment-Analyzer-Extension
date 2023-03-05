@@ -6,7 +6,31 @@ body {
   p {
     margin: 0;
   }
+  .logo {
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    
+    -webkit-animation: shimmer 1s ease-in-out infinite alternate;
+    -moz-animation: shimmer 1s ease-in-out infinite alternate;
+    animation: shimmer 1s ease-in-out infinite alternate;
+  }
+  @keyframes shimmer {
+    from {
+      text-shadow: 0 0 10px #d10c0c, 0 0 20px #f91336, 0 0 30px #eb147f, 0 0 40px #1380e6, 0 0 50px #0c1dd9, 0 0 60px #0917ad, 0 0 70px #04023c;
+    }
+    to {
+      text-shadow: 0 0 20px #0917ad, 0 0 30px #0c1dd9, 0 0 40px #1380e6, 0 0 50px #eb147f, 0 0 60px #f91336, 0 0 70px #d10c0c, 0 0 80px #bd0909;
+    }
+  }
 
-  /* .background {
-    background-image: ;
-} */
+  .bottomText{
+    margin-top: 45px;
+    text-align: center;
+    font-size: 15px;
+    color: #000000;
+    font-family: 'Courier New', monospace;
+  }
+  
+
+ 

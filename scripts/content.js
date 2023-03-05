@@ -41,6 +41,18 @@ function getArticleContents() {
     if (articleContent != null) {
         return articleContent;
     }
+    articleContent = parseHtml(htmlDoc, "c-entry-content"); //Vox (left)
+    if (articleContent != null) {
+        return articleContent;
+    }
+
+    articleContent = parseHtml(htmlDoc, "dcr-h26idz"); //Guardian (left)
+    if (articleContent != null) {
+        return articleContent;
+    }
+    
+
+
 }
 
 function parseHtml(htmlDoc, text) {
